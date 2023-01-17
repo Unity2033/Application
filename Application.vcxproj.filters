@@ -23,5 +23,8 @@
     <ClInclude Include="Reference.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ranged_For.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
