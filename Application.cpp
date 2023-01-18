@@ -57,9 +57,12 @@ int main()
     */
 
     // 클래스의 선언과 정의
+    /*
     Computer samsung;
 
     samsung.Power();
+    */
+
 
     return 0;
 }
