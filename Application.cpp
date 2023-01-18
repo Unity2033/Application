@@ -1,98 +1,66 @@
 #include <iostream> // c++ 입출력 헤더 <iostream> 
+#include "Computer.h"
 
 using namespace std;
 
-namespace A
-{ 
-    int value = 10;
-
-    void Information()
-    {
-       cout << "A 개발자 영역" << endl;
-    }
-}  // <- 이 영역을 벗어나면 메모리에서 사라집니다.
-
-namespace B
+class Character
 {
-    int count = 20;
-   
+    // 생성자란?
+    // 클래스의 인스턴스가 생성되는 시점에 자동으로
+    // 호출되는 특수한 멤버 함수입니다.
 
-    void Information()
-    {
-        cout << "B 개발자 영역" << endl;
-    }
-}
-
-// 범위를 생략해서 사용할 수 있는 기능
-using namespace A;
-
-// 클래스란?
-// 사용자 정의 데이터 유형으로 속성과 함수가 포함되어
-// 있으며, 클래스를 통해 객체를 생성하여 접근하고 
-// 사용할 수 있는 집합체입니다.
-class Monster
-{
-// private이란?
-// 클래스 내부에서만 접근할 수 있도록 설정하는 제한자입니다.
 private :
-    // 기본 접근 지정자
-    // 접근 지정자를 설정하지 않으면 기본적으로
-    // private 접근 지정자로 설정됩니다.
-    int health;
-    float damage;
+    int x;
+    int y;
 
-// public이란?
-// 클래스 내부와 클래스 외부에서 접근할 수 있도록 설정하는 제한자입니다.
 public :
-    // 접근 지정자란? 
-    // 클래스 내부의 포함되어 있는 속성에
-    // 접근 범위를 제한하는 지정자입니다.
+    // 생성자의 경우 객체가 생성될 때 단 한 번만 호출되며,
+    // 생성자는 반환형이 존재하지 않습니다.
 
-    void Attack()
+    Character(int m_x, int m_y) // 클래스의 이름과 동일하게 정의해주어야 합니다.
     {
-        cout << "공격" << endl;
-        name = "monster";
+        x = m_x;
+        y = m_y;
+
+        cout << "x : " << x << " y : " << y << endl;
     }
 
-// protected란?
-// 클래스 내부와 자기가 상속하고 있는 클래스에서만 접근할 수 있도록 설정하는 제한자입니다.
-protected :
-    string name;
-
-};
-
-class Goblin : public Monster
-{
-    void Information()
+    // 소멸자
+    // 객체가 소멸될 때 자동으로 실행되는 클래스의 멤버 함수입니다.
+    ~Character() // ~클래스의 이름으로 정의해주어야 합니다. 
     {
-        name = "Goblin";
-        Attack();
+        cout << "Character가 파괴되었습니다." << endl;
+    }
+
+    // const 함수
+    // 함수 내부에서 값을 변경하지 못하도록 상수화하는 함수입니다.
+    void Talk() const
+    {    
+        cout << "대화 진행" << endl;
     }
 };
 
 int main()
 {
-    // 이름 공간
+    // 생성자와 소멸자
     /*
-    // 속성을 구분할 수 있도록 유효 범위를 설정하는
-    // 영역입니다.
-    cout << value << endl;
-    Information();
+    Character character(6,7);
 
-    cout << B::count << endl;
-    B::Information();
+    character.Talk();
+
+    Character * champion = new Character(1, 9);
+
+    // champion <= 0
+    delete champion;
+
+    // cout << "character의 크기 : " << sizeof(character) << endl;
     */
 
-    // 클래스의 인스턴스화
-    Monster orc;
+    // 클래스의 선언과 정의
+    Computer samsung;
 
-    Monster * dragon = new Monster;
-    dragon->Attack();
+    samsung.Power();
 
-    Goblin object;
-  
-    orc.Attack();
-   
     return 0;
 }
 
