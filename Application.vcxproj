@@ -128,10 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Computer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Computer.h" />
     <ClInclude Include="Ranged_For.h" />
     <ClInclude Include="Reference.h" />
   </ItemGroup>
