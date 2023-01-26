@@ -2,65 +2,109 @@
 
 using namespace std;
 
-class IPhone
+#pragma pack(7)
+// 바이트 패딩을 하지 않고 1 byte로 계산해서 사용하는 전치리기입니다.
+class Unit
 {
 public :
-    int * version;
+    char grade;
+    short mp;
 
-    IPhone()
+    int health;
+    int attack;
+
+    Unit()
     {
-        version = new int;
-        cout << "기본 생성자 호출" << endl;
+        cout << "Unit 객체 생성" << endl;
     }
 
-    // 복사 생성자
-    IPhone(const IPhone & copyIPhone)
+    void Skill(string skillName)
     {
-        // 깊은 복사란?
-        // 객체를 복사할 때, 참조 값이 아닌 인스턴스 자체를 새로 
-        // 복사하여 서로 다른 메모리를 생성하는 복사입니다.
-        version = new int;
-        *version = *copyIPhone.version;
-
-        cout << "복사 생성자 호출" << endl;
-        cout << "version : " << *version << endl;
+        cout << skillName << endl;
     }
 
-    ~IPhone()
+    ~Unit()
     {
-        delete version;
+        cout << "Unit 객체 파괴" << endl;
+    }
+
+
+};
+
+// protected 상속
+// 상속받은 클래스가 protected보다 접근 범위가 넓은
+// 접근 지정자(public)를 모두 protected으로 
+// 설정하는 상속입니다.
+
+class Ghost : protected Unit
+{
+public :
+    int defense;
+    Ghost()
+    {
+        defense = 10;
+        health = 100;
+        attack = 25;
+
+        // Skill("Lock Down");
+        cout << "Ghost 객체 생성" << endl;
+    }
+
+    ~Ghost()
+    {
+        cout << "Ghost 객체 파괴" << endl;
+    }
+};
+
+// private 상속
+// 상속받은 클래스가 private보다 접근 범위가 넓은
+// 접근 지정자(public, protected)를 모두 private으로 
+// 설정하는 상속입니다.
+
+class Duran : private Ghost
+{
+public :
+    Duran()
+    {
+        health = 300;
+        attack = 30;
+
+        // Skill("Clocking");
+
+        cout << "Duran 객체 생성" << endl;
+    }
+
+    ~Duran()
+    {
+        cout << "Duran 객체 파괴" << endl;
     }
 };
 
 int main()
 {
-    // 복사 생성자란?
+    // 상속이란?
     /*
-    // 같은 객체를 복사하여 생성시킬 때 호출되는 생성자입니다.  
-    IPhone se1;
+    // 상위 클래스의 속성을 하위 클래스가 사용 할 수 있도록 
+    // 설정해주는 기능입니다.
 
-    se1.price = 100000;
-    se1.size = 5;
+    //Unit unit;
+    //cout << "unit의 크기 : " << sizeof(unit) << endl;
+    
+    // Ghost ghost;
+    // cout << "ghost의 크기 : " << sizeof(ghost) << endl;
 
-    // se2(se1)
-    IPhone se2 = se1;
+    Duran duran;
+    cout << "duran의 크기 : " << sizeof(duran) << endl;
     */
 
-    // 얕은 복사
-    // 객체를 복사할 때 주솟값을 복사하여 같은 메모리를 가리키는
-    // 복사입니다.
 
-    IPhone se1;
+#pragma region 클래스의 바이트 패딩
 
-    *se1.version = 10;
+    Unit unit;
 
-    // se2(se1)
-    IPhone se2 = se1;
+    cout << "unit의 크기 : " << sizeof(unit) << endl;
+#pragma endregion
 
-    *se2.version = 20;
-
-    cout << "*se1.version의 값 : " << *se1.version << endl;
-    cout << "*se2.version의 값 : " << *se2.version << endl;
 
     return 0;
 }
