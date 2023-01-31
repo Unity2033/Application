@@ -2,117 +2,144 @@
 
 using namespace std;
 
-class Cat
-{
-public : 
-    int age;
-    char blood;
-    double weight;
-};
-
-// 함수의 오버로딩
-// 같은 이름의 함수를 매개 변수의 자료형과 매개 변수의 수로
-// 구분하여 여러 개를 선언할 수 있는 기능입니다.
-
-// 2 차원 Vector 함수
-void Vector(float x, float y)
-{
-    cout << "2차원 Vector(float) 함수" << endl;
-}
-
-void Vector(int x, int y)
-{
-    cout << "2차원 Vector(int) 함수" << endl;
-}
-
-// 3 차원 Vector 함수
-void Vector(float x, float y, float z)
-{
-    cout << "3차원 Vector(float) 함수" << endl;
-}
-
-void Vector(int x, int y, int z)
-{
-    cout << "3차원 Vector(int) 함수" << endl;
-}
-
-// 함수의 오버로딩의 경우 함수의 매개 변수에 전달하는
-// 인수의 형태를 보고 호출하므로, 반환형으로 함수의
-// 오버로딩을 생성할 수 없습니다.
-/*
-int Vector(int x, int y)
-{
-    return 0;
-}
-*/
-
-// 함수의 오버라이드
-// 상위 클래스에 있는 함수를 하위 클래스에서 재정의하여
-// 사용하는 기능입니다.
-class Animal
+class Weapon
 {
 public :
-    void Sound()
+    // 가상 함수 선언
+    virtual void Attack()
     {
-        cout << "동물의 울음소리" << endl;
+        cout << "공격" << endl;
+    }
+
+    void Information()
+    {
+        cout << "무기의 정보" << endl;
     }
 };
 
-class Dog : public Animal
+class Sword : public Weapon 
+{
+public :
+    void Attack()
+    {
+        cout << "검으로 베기" << endl;
+    }
+
+    void Information()
+    {
+        cout << "검의 정보" << endl;
+    }
+};
+
+class Gun : public Weapon
+{
+public :
+    void Attack()
+    {
+        cout << "총으로 발사" << endl;
+    }
+
+    void Information()
+    {
+        cout << "총의 정보" << endl;
+    }
+};
+
+// 캡슐화
+/*
+// 객체의 속성과 함수를 하나로 묶어서 실제 구현 내용의 일부를
+// 내부에 은닉하여 감추는 작업입니다.
+class Car
+{
+private :
+    int speed;
+public :
+    void SetPedal(int speed)
+    {
+        if (speed >= 180)
+        {
+            speed = 180;
+        }
+
+        this->speed = speed;
+    }
+
+    int GetSpeed()
+    {
+        return speed;
+    }
+};
+*/
+
+
+// OOP 객체 지향 프로그래밍
+// 4대 특징
+// 1. 상속
+// 2. 다형성
+// 3. 캡슐화
+// 4. 추상화
+
+class Object
 {
 public:
-    void Sound()
+    // 순수 가상 함수가 하나라도 포함이 되어 있다면
+    // 추상 클래스라고 정의됩니다.
+    virtual void A() = 0;
+};
+
+class NPC : public Object
+{
+public :
+    void A()
     {
-        cout << "강아지의 울음소리" << endl;
+        cout << "NPC 입니다." << endl;
     }
 
 };
+
 
 int main()
 {
-    // 클래스 오프셋 
+    // 가상 함수란?
     /*
-    // 동일한 프로젝트 안에서 처음부터 주어진 요소나 지점까지의 변위차를 
-    // 나타내는 정수형입니다.
-    Cat cat;
+    // 상속하는 클래스 내에서 같은 형태의 함수로 재정의될 수 있는 함수입니다.
+    Weapon * weapon = new Weapon();
 
-    cat.age = 5;
-    cat.blood = 'O';
-    cat.weight = 5.75f;
+    cout << "Weapon 클래스의 크기 : " << sizeof(Weapon) << endl;
 
-    cout << (int)(&(((Cat*)0)->age)) << endl;
-    cout << (int)(&(((Cat*)0)->blood)) << endl;
-    cout << (int)(&(((Cat*)0)->weight)) << endl;
+    weapon->Attack();
 
-    cout << "cat의 메모리 크기 : " << sizeof(cat) << endl;
+    Gun * gun = new Gun();
+
+    weapon = gun;
+
+    weapon->Attack();
     */
 
-    // 다형성이란?
-    // 여러 개의 서로 다른 객체가 동일한 기능을 서로 다른
-    // 방법으로 처리할 수 있는 작업입니다.
+    // 순수 가상 함수란?
+    // 인터페이스를 하위 클래스에게 전달하기 위해 사용하는 함수입니다.
 
-    // 함수의 오버로딩
+    // 순수 가상 함수는 정의되지 않은 함수가 있으므로, 생성할 수 없습니다.
+    // Object object;
+
+    Object * obj = new NPC;
+
+    NPC npc;
+    npc.A();
+
+    // 캡슐화
     /*
-    Vector(10, 20);
-    Vector(10, 20, 30);
+    Car car;
 
-    Vector(5.95f, 25.5f);
-    Vector(10.75f, 15.35f, 2.5f);
+    int damage = 0;
+
+    car.SetPedal(damage);
+
+    cout << car.GetSpeed() << endl;
     */
 
-    // 함수의 오버라이드는 상속 관계에서만 이루어지며,
-    // 하위 클래스에서 함수를 재정의할 때 상위 클래스의
-    // 함수 형태와 일치해야 합니다.
 
-    Dog * dog = new Dog();
-    dog->Sound();
 
-    Animal * animal = new Animal();
-    animal->Sound();
-
-    animal = dog;
-
-    animal->Sound();
     return 0;
 }
 
