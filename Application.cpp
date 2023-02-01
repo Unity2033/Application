@@ -1,144 +1,76 @@
 #include <iostream> // c++ 입출력 헤더 <iostream> 
+#include <list>
 
 using namespace std;
 
-class Weapon
-{
-public :
-    // 가상 함수 선언
-    virtual void Attack()
-    {
-        cout << "공격" << endl;
-    }
-
-    void Information()
-    {
-        cout << "무기의 정보" << endl;
-    }
-};
-
-class Sword : public Weapon 
-{
-public :
-    void Attack()
-    {
-        cout << "검으로 베기" << endl;
-    }
-
-    void Information()
-    {
-        cout << "검의 정보" << endl;
-    }
-};
-
-class Gun : public Weapon
-{
-public :
-    void Attack()
-    {
-        cout << "총으로 발사" << endl;
-    }
-
-    void Information()
-    {
-        cout << "총의 정보" << endl;
-    }
-};
-
-// 캡슐화
+// 가상 소멸자
 /*
-// 객체의 속성과 함수를 하나로 묶어서 실제 구현 내용의 일부를
-// 내부에 은닉하여 감추는 작업입니다.
-class Car
+class classA
 {
-private :
-    int speed;
-public :
-    void SetPedal(int speed)
+public:
+    classA()
     {
-        if (speed >= 180)
-        {
-            speed = 180;
-        }
-
-        this->speed = speed;
+        cout << "class A 생성" << endl;
     }
 
-    int GetSpeed()
+    virtual ~classA()
     {
-        return speed;
+        cout << "class A 소멸" << endl;
+    }
+};
+
+class classB : public classA
+{
+public:
+    classB()
+    {
+        cout << "class B 생성" << endl;
+    }
+
+    void Hello()
+    {
+        cout << "classB Hello" << endl;
+    }
+
+    ~classB()
+    {
+        cout << "class B 소멸" << endl;
     }
 };
 */
 
-
-// OOP 객체 지향 프로그래밍
-// 4대 특징
-// 1. 상속
-// 2. 다형성
-// 3. 캡슐화
-// 4. 추상화
-
-class Object
-{
-public:
-    // 순수 가상 함수가 하나라도 포함이 되어 있다면
-    // 추상 클래스라고 정의됩니다.
-    virtual void A() = 0;
-};
-
-class NPC : public Object
-{
-public :
-    void A()
-    {
-        cout << "NPC 입니다." << endl;
-    }
-
-};
-
-
 int main()
 {
-    // 가상 함수란?
+    // 가상 소멸자
     /*
-    // 상속하는 클래스 내에서 같은 형태의 함수로 재정의될 수 있는 함수입니다.
-    Weapon * weapon = new Weapon();
+    // 객체가 소멸될 때 현재 참조하고 있는 객체와 상관없이
+    // 모두 호출되는 소멸자입니다.
+    classB * pb = new classB();
+    pb->Hello();
 
-    cout << "Weapon 클래스의 크기 : " << sizeof(Weapon) << endl;
+    classA * pa = pb;
 
-    weapon->Attack();
-
-    Gun * gun = new Gun();
-
-    weapon = gun;
-
-    weapon->Attack();
+    delete pa;
     */
 
-    // 순수 가상 함수란?
-    // 인터페이스를 하위 클래스에게 전달하기 위해 사용하는 함수입니다.
+    // STL (Standard Template Library)
+    list<int> intList;
 
-    // 순수 가상 함수는 정의되지 않은 함수가 있으므로, 생성할 수 없습니다.
-    // Object object;
+    intList.push_back(10);
+    intList.push_back(20);
+    intList.push_back(30); 
+    intList.push_back(40);
 
-    Object * obj = new NPC;
+    cout << "intList의 사이즈 : " << intList.size() << endl;
 
-    NPC npc;
-    npc.A();
-
-    // 캡슐화
-    /*
-    Car car;
-
-    int damage = 0;
-
-    car.SetPedal(damage);
-
-    cout << car.GetSpeed() << endl;
-    */
-
-
+    // intList.empty() : 리스트에 데이터 비어있다면 true 반환하는 함수
+    while (intList.empty() != true)
+    {
+        // intList.front() : 리스트에 가장 앞에 있는 데이터를 출력해주는 함수
+        cout << intList.front() << endl;
+        // intList.pop_front() : 리스트에 가장 앞에 있는 데이터를 제거하는 함수
+        intList.pop_front();
+    }
 
     return 0;
 }
