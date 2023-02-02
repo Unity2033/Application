@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Override", "Override\Overri
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Virtual_Function", "..\Virtual_Function\Virtual_Function.vcxproj", "{AEE92ADA-86A2-4C0A-B2E2-A39934B90970}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Virtual_Destructor", "..\Virtual_Destructor\Virtual_Destructor.vcxproj", "{74AB3D9A-679C-4A45-AC69-D80A6A730413}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,14 @@ Global
 		{AEE92ADA-86A2-4C0A-B2E2-A39934B90970}.Release|x64.Build.0 = Release|x64
 		{AEE92ADA-86A2-4C0A-B2E2-A39934B90970}.Release|x86.ActiveCfg = Release|Win32
 		{AEE92ADA-86A2-4C0A-B2E2-A39934B90970}.Release|x86.Build.0 = Release|Win32
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Debug|x64.ActiveCfg = Debug|x64
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Debug|x64.Build.0 = Debug|x64
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Debug|x86.ActiveCfg = Debug|Win32
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Debug|x86.Build.0 = Debug|Win32
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Release|x64.ActiveCfg = Release|x64
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Release|x64.Build.0 = Release|x64
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Release|x86.ActiveCfg = Release|Win32
+		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
