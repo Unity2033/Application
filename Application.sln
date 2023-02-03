@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Virtual_Function", "..\Virt
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Virtual_Destructor", "..\Virtual_Destructor\Virtual_Destructor.vcxproj", "{74AB3D9A-679C-4A45-AC69-D80A6A730413}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Template", "..\Template\Template.vcxproj", "{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -121,6 +123,14 @@ Global
 		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Release|x64.Build.0 = Release|x64
 		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Release|x86.ActiveCfg = Release|Win32
 		{74AB3D9A-679C-4A45-AC69-D80A6A730413}.Release|x86.Build.0 = Release|Win32
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Debug|x64.ActiveCfg = Debug|x64
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Debug|x64.Build.0 = Debug|x64
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Debug|x86.ActiveCfg = Debug|Win32
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Debug|x86.Build.0 = Debug|Win32
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Release|x64.ActiveCfg = Release|x64
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Release|x64.Build.0 = Release|x64
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Release|x86.ActiveCfg = Release|Win32
+		{523FF7BE-39F3-47FD-9A73-E8108FE7FF5E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

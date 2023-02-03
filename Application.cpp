@@ -1,126 +1,110 @@
 #include <iostream> // c++ 입출력 헤더 <iostream> 
-#include <stack>
-#include <queue>
+#include <vector>
+#include <conio.h>
+#include <windows.h>
 
 using namespace std;
 
-// 템플릿 
-// 데이터 형식에 의존하지 않고, 하나의 값이 여러 다른 데이터 타입
-// 들을 가질 수 있는 기술에 중점을 두어 재사용성을 높일 수 있는
-// 프로그래밍 방법입니다.
-
-template <typename T>
-void Calculator(T x, T y)
-{
-    cout << "x + y = " << x + y << endl;
-}
-
-// 템플릿의 특수화
-// 템플릿 함수를 사용하지만, 특정 매개변수에 대해서
-// 별도의 처리를 하고 싶을 때 사용하는 기능입니다.
-template<>
-void Calculator(const char * x, const char * y)
-{
-    cout << "x = " << x << endl;
-    cout << "y = " << y << endl;
-}
-
-template <typename T>
-class DataStruct
-{
-private :
-    T data;
-
-public:
-    void Push(T x)
-    {
-        cout << x << "의 값이 들어왔습니다." << endl;
-    }
-};
-
-
-void DataTable(int array[], int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        cout << "array[" << i << "]" << array[i] << endl;
-    }
-}
+#define UP 72
+#define LEFT 75
+#define RIGHT 77
+#define DOWN 80
 
 int main()
 {
-    // 템플릿
+    // 벡터
     /*
-    //Calculator(10, 20);
-    //Calculator(5.6, 7.12);
-    //Calculator('A', 'B');
+    // 동적으로 연속적인 메모리을 할당하고 실행 시간에
+    // 메모리의 크기를 변경할 수 있는 컨테이너입니다.
 
-    //Calculator("count", "Down");
+    vector<int> intVector;
 
-    DataStruct<char> charStruct;
-    charStruct.Push('A');
-    charStruct.Push('B');
-    charStruct.Push('C');
-    charStruct.Push('D');
-    */
+    // push_back() : 벡터의 메모리 가장 끝에 값을 저장하는 함수
+    intVector.push_back(100);
+    intVector.push_back(200);
+    intVector.push_back(300);
+    intVector.push_back(400);
+    intVector.push_back(500);
 
-    // 스택
-    /*
-    stack<int> intStack;
-
-    // push( ) : 스택에 데이터를 저장하는 함수
-    intStack.push(1);
-    intStack.push(2);
-    intStack.push(3);
-
-    // size( ) : 현재 스택에 크기를 반환하는 함수
-    cout << "스택의 크기 : " << intStack.size() << endl;
-
-    // pop() : 스택에 데이터를 제거하는 함수
-    intStack.pop();
-
-    // top() : 스택에 가장 위에 있는 데이터를 반환하는 함수
-    cout << intStack.top() << endl;
-
-    // empty() : 스택에 데이터가 비어있는지 확인하는 함수
-    cout << intStack.empty() << endl;
-
-
-    // 스택
-    // 1, 2, 3, 4, 5
-    intStack.push(1);
-    intStack.push(2);
-    intStack.push(3);
-    intStack.push(4);
-    intStack.push(5);
-
-    while (intStack.empty() == 0)
+    // size() : 벡터의 크기를 반환하는 함수
+    for (int i = 0; i < intVector.size(); i++)
     {
-        cout << intStack.top() << endl;
-        intStack.pop();
+        cout << intVector[i] << endl;
     }
+
+    // pop_back() : 벡터의 메모리 가장 끝에 값을 제거하는 함수
+    intVector.pop_back();
+    intVector.pop_back();
+    intVector.pop_back();
+    intVector.pop_back();
+    intVector.pop_back();
+
+    // intVector.empty() : 벡터의 메모리 가장 끝에 값을 제거하는 함수
+    cout << "벡터의 메모리는 비어있는가 ? " << intVector.empty() << endl;
+
+    cout << "벡터의 메모리 크기는 : " << intVector.size() << endl;
+
+    cout << "벡터가 메모리가 할당되어 있는 공간 : " << intVector.capacity() << endl;
+
     */
 
-    // 큐
-    /*
-    queue<int> intQueue;
+    // 리듬 게임
+    PlaySound(TEXT("BGM.wav"), NULL, SND_NODEFAULT | SND_ASYNC | SND_LOOP);
 
-    intQueue.push(1);
-    intQueue.push(2);
-    intQueue.push(3);
-    intQueue.push(4);
-    intQueue.push(5);
+    vector<string> data;
 
-    while (intQueue.empty() == 0)
+    data.push_back("→");
+    data.push_back("↓");
+    data.push_back("↑");
+    data.push_back("←");
+
+    char key;
+
+    while (1)
     {
-        cout << intQueue.front() << endl;
-        intQueue.pop();
+        for (int i = 0; i < data.size(); i++)
+        {
+            cout << data[i] << "  ";
+        }
+
+        if (data.size() == 0)
+        {
+            break;
+        }
+
+        key = _getch();
+
+        switch (key)
+        {
+        case UP :
+                if ("↑" == data.back())
+                {
+                    data.pop_back();
+                }
+                break;
+            case LEFT: 
+                if ("←" == data.back())
+                {
+                    data.pop_back();
+                }
+                break;
+            case RIGHT: 
+                if ("→" == data.back())
+                {
+                    data.pop_back();
+                }
+                break;
+            case DOWN: 
+                if ("↓" == data.back())
+                {
+                    data.pop_back();
+                }
+                break;
+        }
+
+        system("cls");
     }
-    */
 
-    int room[5] = { 1, 2, 3, 4, 5 };
-
-    DataTable(room, 5);
 
     return 0;
 }
