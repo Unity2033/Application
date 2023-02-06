@@ -1,110 +1,66 @@
 #include <iostream> // c++ 입출력 헤더 <iostream> 
-#include <vector>
-#include <conio.h>
-#include <windows.h>
+#include <deque>
 
 using namespace std;
 
-#define UP 72
-#define LEFT 75
-#define RIGHT 77
-#define DOWN 80
+void PointerSwap(int ** x, int ** y)
+{
+    int * temp = *x;
+
+    *x = *y;
+
+    *y = temp;
+}
 
 int main()
 {
-    // 벡터
+    // 데크
     /*
-    // 동적으로 연속적인 메모리을 할당하고 실행 시간에
-    // 메모리의 크기를 변경할 수 있는 컨테이너입니다.
+    deque<int> deque;
 
-    vector<int> intVector;
+    deque.push_back(10);
+    deque.push_back(20);
+    deque.push_back(30);
+    deque.push_back(40);
 
-    // push_back() : 벡터의 메모리 가장 끝에 값을 저장하는 함수
-    intVector.push_back(100);
-    intVector.push_back(200);
-    intVector.push_back(300);
-    intVector.push_back(400);
-    intVector.push_back(500);
+    // [0] [1] [2] [3]
+    // 10  20  30  40
+    cout << "deque의 size : " << deque.size() << endl;
 
-    // size() : 벡터의 크기를 반환하는 함수
-    for (int i = 0; i < intVector.size(); i++)
+    // [0] [1] [2]
+    // 20  30  40
+    deque.pop_front();
+
+    for (int i = 0; i < deque.size(); i++)
     {
-        cout << intVector[i] << endl;
+        cout << deque[i] << endl;
     }
-
-    // pop_back() : 벡터의 메모리 가장 끝에 값을 제거하는 함수
-    intVector.pop_back();
-    intVector.pop_back();
-    intVector.pop_back();
-    intVector.pop_back();
-    intVector.pop_back();
-
-    // intVector.empty() : 벡터의 메모리 가장 끝에 값을 제거하는 함수
-    cout << "벡터의 메모리는 비어있는가 ? " << intVector.empty() << endl;
-
-    cout << "벡터의 메모리 크기는 : " << intVector.size() << endl;
-
-    cout << "벡터가 메모리가 할당되어 있는 공간 : " << intVector.capacity() << endl;
-
     */
 
-    // 리듬 게임
-    PlaySound(TEXT("BGM.wav"), NULL, SND_NODEFAULT | SND_ASYNC | SND_LOOP);
+    // 이중 포인터
+    /*
+    int a = 10;
+    int * ptr = &a;
+    int ** dptr = &ptr;
 
-    vector<string> data;
+    cout << "a의 시작 주소 : " << &a << endl;
+    cout << "*dptr의 값 : " << *dptr << endl;
+    cout << "**dptr의 값 : " << **dptr << endl;
+    */
 
-    data.push_back("→");
-    data.push_back("↓");
-    data.push_back("↑");
-    data.push_back("←");
+    int a = 10;
+    int b = 20;
 
-    char key;
+    int * aptr = &a;
+    int * bptr = &b;
 
-    while (1)
-    {
-        for (int i = 0; i < data.size(); i++)
-        {
-            cout << data[i] << "  ";
-        }
+    cout << "aptr이 가리키는 값 : " << *aptr << endl;
+    cout << "bptr이 가리키는 값 : " << *bptr << endl;
 
-        if (data.size() == 0)
-        {
-            break;
-        }
+    PointerSwap(&aptr, &bptr);
 
-        key = _getch();
-
-        switch (key)
-        {
-        case UP :
-                if ("↑" == data.back())
-                {
-                    data.pop_back();
-                }
-                break;
-            case LEFT: 
-                if ("←" == data.back())
-                {
-                    data.pop_back();
-                }
-                break;
-            case RIGHT: 
-                if ("→" == data.back())
-                {
-                    data.pop_back();
-                }
-                break;
-            case DOWN: 
-                if ("↓" == data.back())
-                {
-                    data.pop_back();
-                }
-                break;
-        }
-
-        system("cls");
-    }
-
+    cout << "aptr이 가리키는 값 : " << *aptr << endl;
+    cout << "bptr이 가리키는 값 : " << *bptr << endl;
 
     return 0;
 }
