@@ -1,66 +1,98 @@
 #include <iostream> // c++ 입출력 헤더 <iostream> 
-#include <deque>
+#include <map>
+#include <set>
 
 using namespace std;
 
-void PointerSwap(int ** x, int ** y)
-{
-    int * temp = *x;
-
-    *x = *y;
-
-    *y = temp;
-}
-
 int main()
 {
-    // 데크
+    // map
     /*
-    deque<int> deque;
+    // key와 value로 데이터를 저장시키는 자료구조입니다.
+    map<string, int> mapData;
 
-    deque.push_back(10);
-    deque.push_back(20);
-    deque.push_back(30);
-    deque.push_back(40);
+    mapData.insert(pair<string, int>("검", 100));
+    mapData.insert(pair<string, int>("갑옷", 200));
+    mapData.insert(pair<string, int>("투구", 300));
+    mapData.insert(pair<string, int>("신발", 400));
+    mapData.insert(pair<string, int>("장갑", 500));
+    mapData.insert(pair<string, int>("각반", 1800));
 
-    // [0] [1] [2] [3]
-    // 10  20  30  40
-    cout << "deque의 size : " << deque.size() << endl;
+    // 반복자
+    map<string, int>::iterator iter;
 
-    // [0] [1] [2]
-    // 20  30  40
-    deque.pop_front();
+    // begin() : map 데이터의 시작 주소를 반환합니다.
+    // mapData.begin();
 
-    for (int i = 0; i < deque.size(); i++)
+    // end() : map 데이터의 마지막 뒤에 있는 주소를 반환합니다.
+
+    // 연관 컨테이너는 KEY 값이 중복될 수 없습니다.
+    // 연관 컨테이너는 VALUE 값은 중복될 수 있습니다.
+
+    // mapData.find("검")
+    // find() : map에 있는 KEY 값이 있는지 없는 지 확인하는 함수입니다.
+    // mapData.find("검")
+    
+    // map에서 데이터를 찾을 때 iterator를 사용하여 
+    // map 내부에 데이터를 전체 탐색하여 있다면 KEY 값이 있는 거고,
+    // map 내부에 데이터가 없다면 없는 형태로 동작합니다.
+    if (mapData.find("검") != mapData.end())
     {
-        cout << deque[i] << endl;
+        cout << "KEY 값 검이 있습니다." << endl;
+    }
+    else
+    {
+        cout << "KEY 값이 없습니다.";
+    }
+   
+    for (iter = mapData.begin(); iter != mapData.end(); iter++)
+    {
+        // iter->first : KEY
+        cout << "KEY 값 : " << iter->first << endl;
+        cout << "VALUE 값 : " << iter->second << endl;
+    }
+
+    cout << "------------------------------------------" << endl;
+
+    map<string, int>::reverse_iterator iter1;
+
+    for (iter1 = mapData.rbegin(); iter1 != mapData.rend(); ++iter1)
+    {
+        cout << "KEY 값 : " << iter1->first << endl;
+        cout << "VALUE 값 : " << iter1->second << endl;
     }
     */
 
-    // 이중 포인터
-    /*
-    int a = 10;
-    int * ptr = &a;
-    int ** dptr = &ptr;
+    // set
+    set<int> setData;
 
-    cout << "a의 시작 주소 : " << &a << endl;
-    cout << "*dptr의 값 : " << *dptr << endl;
-    cout << "**dptr의 값 : " << **dptr << endl;
-    */
+    setData.insert(10);
+    setData.insert(10);
+    setData.insert(20);
+    setData.insert(30);
+    setData.insert(40);
+    setData.insert(50);
 
-    int a = 10;
-    int b = 20;
+    set<int>::iterator iter;
 
-    int * aptr = &a;
-    int * bptr = &b;
+    for (iter = setData.begin(); iter != setData.end(); iter++)
+    {
+        cout << *iter << endl;
+    }
 
-    cout << "aptr이 가리키는 값 : " << *aptr << endl;
-    cout << "bptr이 가리키는 값 : " << *bptr << endl;
+    iter = setData.find(50);
 
-    PointerSwap(&aptr, &bptr);
+    if (iter != setData.end())
+    {
+        cout << "값을 찾았습니다." << endl;
+    }
+    else
+    {
+        cout << "값을 찾지 못했습니다." << endl;
+    }
 
-    cout << "aptr이 가리키는 값 : " << *aptr << endl;
-    cout << "bptr이 가리키는 값 : " << *bptr << endl;
+    cout << "setData의 사이즈 : " << setData.size() << endl;
+
 
     return 0;
 }
