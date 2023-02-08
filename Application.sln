@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vector", "..\Vector\Vector.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Double_Pointer", "..\Double_Pointer\Double_Pointer.vcxproj", "{F2D3D142-325F-4C79-B17E-1874F9A87F93}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Associative_Container", "..\Associative_Container\Associative_Container.vcxproj", "{72485684-E534-4843-8D4A-3A2DBF4035EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{F2D3D142-325F-4C79-B17E-1874F9A87F93}.Release|x64.Build.0 = Release|x64
 		{F2D3D142-325F-4C79-B17E-1874F9A87F93}.Release|x86.ActiveCfg = Release|Win32
 		{F2D3D142-325F-4C79-B17E-1874F9A87F93}.Release|x86.Build.0 = Release|Win32
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Debug|x64.ActiveCfg = Debug|x64
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Debug|x64.Build.0 = Debug|x64
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Debug|x86.ActiveCfg = Debug|Win32
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Debug|x86.Build.0 = Debug|Win32
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Release|x64.ActiveCfg = Release|x64
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Release|x64.Build.0 = Release|x64
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Release|x86.ActiveCfg = Release|Win32
+		{72485684-E534-4843-8D4A-3A2DBF4035EE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
